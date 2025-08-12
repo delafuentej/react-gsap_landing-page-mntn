@@ -119,7 +119,7 @@ const Navbar = () => {
                 </svg>
               </a>
 
-              <div className="burger close-menu" onClick={closeMenu}>
+              <div className="burger is-active close-menu" onClick={closeMenu}>
                 <div className="burger-line-wrapper">
                   <span className="burger-line"></span>
                   <span className="burger-line"></span>
