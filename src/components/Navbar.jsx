@@ -1,8 +1,40 @@
 import { CgProfile } from "react-icons/cg";
+import { useState, useRef, useEffect } from "react";
+import { CiBurger } from "react-icons/ci";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const headerRef = useRef(null);
+  const burgerRef = useRef(null);
+
+  // Maneja las clases y atributos cuando cambia el estado
+  useEffect(() => {
+    const header = headerRef.current;
+
+    if (menuOpen) {
+      header?.classList.add("menu-is-active");
+      burgerRef.current?.classList.add("is-active");
+      document.body.classList.add("overflow-hidden");
+      document.body.setAttribute("data-lenis-prevent", "");
+    } else {
+      header?.classList.remove("menu-is-active");
+      burgerRef.current?.classList.remove("is-active");
+      document.body.classList.remove("overflow-hidden");
+      document.body.removeAttribute("data-lenis-prevent");
+    }
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <nav className="navbar">
         <div className="header-container">
           <a href="#" className="brand">
@@ -39,7 +71,11 @@ const Navbar = () => {
             </svg>
           </a>
 
-          <div className="burger is-active close-menu">
+          <div
+            className="burger close-menu"
+            ref={burgerRef}
+            onClick={toggleMenu}
+          >
             <div className="burger-line-wrapper">
               <span className="burger-line"></span>
               <span className="burger-line"></span>
@@ -83,7 +119,7 @@ const Navbar = () => {
                 </svg>
               </a>
 
-              <div className="burger is-active close-menu">
+              <div className="burger close-menu" onClick={closeMenu}>
                 <div className="burger-line-wrapper">
                   <span className="burger-line"></span>
                   <span className="burger-line"></span>
@@ -91,6 +127,8 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+
+            {/* menu inner */}
 
             <ul className="menu-inner">
               <li className="menu-item">
@@ -119,7 +157,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="header-backdrop" />
+      <div className="header-backdrop" onClick={closeMenu} />
     </header>
   );
 };
