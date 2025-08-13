@@ -1,3 +1,4 @@
+import { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
@@ -8,9 +9,13 @@ import { Hero, Content, Footer } from "./sections";
 //https://github.com/YT-PixelPerfectLabs/MNTN-Landing-Page-UI/tree/main
 //https://www.youtube.com/watch?v=wV8ue2wiB4U&t=705s
 
+//https://www.youtube.com/watch?v=wV8ue2wiB4U&t=876s
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function App() {
+  const [heroHeight, setHeroHeight] = useState(0);
+  console.log(heroHeight);
   useGSAP(() => {
     const lenis = new Lenis({
       smooth: true,
@@ -35,10 +40,10 @@ function App() {
   }, []);
   return (
     <>
-      <Navbar />
+      <Navbar heroHeight={heroHeight} />
 
       <main>
-        <Hero />
+        <Hero onHeightChange={setHeroHeight} />
         <Content />
         <Slider />
       </main>

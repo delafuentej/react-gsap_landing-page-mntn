@@ -1,12 +1,13 @@
+import { useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import React from "react";
 
-const Hero = () => {
+const Hero = ({ onHeightChange }) => {
   useGSAP(() => {
     gsap.fromTo(
-      [".hero-subtitle", ".hero-title", ".hero-action"],
+      [".hero-subtitle", ".hero-title span", ".hero-action"],
       {
         autoAlpha: 0,
         y: 100,
@@ -36,14 +37,14 @@ const Hero = () => {
       .to(
         ".mountains",
         {
-          y: -300,
+          y: -800, //-300
         },
         "0"
       )
       .to(
         ".man-standing",
         {
-          y: -100,
+          y: -500, //-100
         },
         "0"
       )
@@ -57,6 +58,20 @@ const Hero = () => {
       );
   }, []);
 
+  useEffect(() => {
+    const updateHeight = () => {
+      const height = document.querySelector(".hero-section")?.offsetHeight || 0;
+      onHeightChange(height);
+      // Aquí puedes usar heroHeight si lo necesitas
+    };
+
+    updateHeight();
+
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [onHeightChange]);
   return (
     <section className="hero-section section" id="section-00">
       <div className="hero-image-wrapper">

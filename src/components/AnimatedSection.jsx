@@ -34,12 +34,7 @@ const AnimatedSection = ({
         { autoAlpha: 1, y: 0, stagger: 0.2 },
         "0"
       )
-      .fromTo(
-        `#${id} .counter`,
-        { autoAlpha: 0 },
-        { autoAlpha: 1 },
-        "0"
-      )
+      .fromTo(`#${id} .counter`, { autoAlpha: 0 }, { autoAlpha: 1 }, "0")
       .fromTo(
         `#${id} .content-image img`,
         { autoAlpha: 0, scale: 1.5 },

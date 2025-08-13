@@ -2,13 +2,12 @@ import { CgProfile } from "react-icons/cg";
 import { useState, useRef, useEffect } from "react";
 import { CiBurger } from "react-icons/ci";
 
-const Navbar = () => {
+const Navbar = ({ heroHeight }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const headerRef = useRef(null);
   const burgerRef = useRef(null);
 
-  // Maneja las clases y atributos cuando cambia el estado
   useEffect(() => {
     const header = headerRef.current;
 
@@ -32,6 +31,21 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = headerRef.current;
+      if (!header) return;
+      header.classList.toggle("on-scroll", window.scrollY >= heroHeight / 2);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Limpieza del event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [heroHeight]);
 
   return (
     <header className="header" ref={headerRef}>
