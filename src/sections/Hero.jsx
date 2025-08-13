@@ -37,7 +37,7 @@ const Hero = ({ onHeightChange }) => {
       .to(
         ".mountains",
         {
-          y: -400, //-300
+          y: -300, //-300
         },
         "0"
       )
