@@ -38,13 +38,13 @@ const Slider = () => {
             <a href="#section-00">Start</a>
           </li>
           <li className="slider-list-item">
-            <a href="#section-1">01</a>
+            <a href="#section-01">01</a>
           </li>
           <li className="slider-list-item">
-            <a href="#section-2">02</a>
+            <a href="#section-02">02</a>
           </li>
           <li className="slider-list-item">
-            <a href="#section-3">03</a>
+            <a href="#section-03">03</a>
           </li>
         </ul>
         <div className="slider-progress">
