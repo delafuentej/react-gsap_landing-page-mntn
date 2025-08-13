@@ -37,14 +37,14 @@ const Hero = ({ onHeightChange }) => {
       .to(
         ".mountains",
         {
-          y: -800, //-300
+          y: -400, //-300
         },
         "0"
       )
       .to(
         ".man-standing",
         {
-          y: -500, //-100
+          y: -100, //-100
         },
         "0"
       )
