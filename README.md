@@ -13,7 +13,7 @@ You will learn how to create a fixed header, an animated hero section, layered p
 ## 🌐 Live Demo
 
 Experience the Interactive Web:
-🔗 https://react-gsap-landing-page-mntn-n4zndj5qg-delafuentejs-projects.vercel.app/
+🔗 https://react-gsap-landing-page-mntn.vercel.app/
 
 🌍 Deployment
 This app is deployed via Vercel, enabling fast global hosting with zero-config.
